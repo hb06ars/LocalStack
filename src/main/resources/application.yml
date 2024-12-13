@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME:default-app}
+
+aws:
+  region: ${AWS_REGION:us-east-1}
+  endpoints:
+    s3: ${AWS_ENDPOINT_S3:http://localhost:4566}
+    sqs: ${AWS_ENDPOINT_SQS:http://localhost:4566}
+    sns: ${AWS_ENDPOINT_SNS:http://localhost:4566}
+    dynamodb: ${AWS_ENDPOINT_DYNAMODB:http://localhost:4566}
+
+cloud:
+  aws:
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY:fakeAccessKey}
+      secretKey: ${AWS_SECRET_KEY:fakeSecretKey}
+    region:
+      static: ${AWS_REGION:us-east-1}
+    stack:
+      auto: false
+    s3:
+      endpoint: ${AWS_ENDPOINT_S3:http://localhost:4566}
+      bucketName: ${BUCKETNAME:teste}
+    sqs:
+      endpoint: ${AWS_ENDPOINT_SQS:http://localhost:4566}
+    sns:
+      endpoint: ${AWS_ENDPOINT_SNS:http://localhost:4566}
+      topicArn: ${AWS_SNS_TOPIC_ARN:arn:aws:sns:us-east-1:000000000000:MyTopic}
+    dynamodb:
+      endpoint: ${AWS_ENDPOINT_DYNAMODB:http://localhost:4566}

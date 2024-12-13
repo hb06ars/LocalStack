@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack
+    ports:
+      - "4566:4566" # Porta principal para o LocalStack
+      - "4510-4559:4510-4559" # Portas para serviços específicos
+    environment:
+      - SERVICES=s3,sqs,sns,dynamodb,lambda # Serviços ativados no LocalStack
+      - DEBUG=1 # Habilita logs de depuração
+      - DATA_DIR=/localstack/data # Persistência de dados entre execuções
+      - LAMBDA_EXECUTOR=docker # Executor para Lambda (se necessário)
+      - AWS_DEFAULT_REGION=us-east-1 # Região padrão para serviços
+    volumes:
+      - "./localstack/data:/localstack/data" # Persistência local dos dados
+      - "/var/run/docker.sock:/var/run/docker.sock" # Necessário para Lambdas no executor Docker
