@@ -1,4 +1,4 @@
-HELP.md
+README.md
 target/
 localstack/
 !.mvn/wrapper/maven-wrapper.jar
