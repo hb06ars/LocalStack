@@ -14,7 +14,7 @@ services:
       - DEBUG=1
       - DATA_DIR=/localstack/data
       - LAMBDA_EXECUTOR=docker
-      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_DEFAULT_REGION=sa-east-1
       - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN}
 
     volumes:
