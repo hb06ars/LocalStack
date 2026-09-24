@@ -6,6 +6,8 @@ Para utilizar alguns serviços como: S3, SQS, SNS, DynamoDB...
 
 - Para iniciar primeiro precisamos subir o docker-compose.yml
 
+## COLLECTION
+- Baixe as Collections do Projeto: **DOCKER.postman_collection.json**
 
 ## Instalando o AWS CLI LOCAL
 
