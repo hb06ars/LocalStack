@@ -13,6 +13,7 @@ let zoom = 0.65;
 let selected = null;
 let font = 'Montserrat';
 let fontSize = 52;
+let bordaSize = 0;
 let textColor = '#111111';
 let objectBackgroundColor = '#111111';
 let restoring = false;
@@ -103,30 +104,45 @@ function saveHistory() {
 
 function updateSelection() {
   selected = canvas.getActiveObject() || null;
+
   const hasSelection = !!selected;
+
   $('empty-properties').hidden = hasSelection;
   $('selected-properties').hidden = !hasSelection;
   $('text-properties').hidden = !selected || selected.type !== 'i-text';
-  $('object-properties').hidden = !selected || (selected.type !== 'rect' && selected.type !== 'circle');
+  $('object-properties').hidden =
+    !selected || (selected.type !== 'rect' && selected.type !== 'circle');
 
-  document.getElementById("id-borda").style.display = !selected || selected.type !== 'rect' ? 'none' : 'block';
+  document.getElementById("id-borda").style.display =
+    !selected || selected.type !== 'rect' ? 'none' : 'block';
 
+  // Texto
   if (selected && selected.type === 'i-text') {
     font = String(selected.fontFamily || 'Montserrat');
     fontSize = Number(selected.fontSize || 52);
     textColor = String(selected.fill || '#111111');
+
     $('font-select').value = font;
     $('font-size').value = fontSize;
     $('text-color').value = normalizeColor(textColor);
     $('text-color-value').textContent = textColor;
   }
 
-  if (selected && (selected.type === 'rect' || selected.type === 'circle')) {
-    objectBackgroundColor = String(selected.fill || '#111111');
-    $('background-color').value = normalizeColor(objectBackgroundColor);
-    $('background-color-value').textContent = objectBackgroundColor;
+  // Retângulo
+  if (selected && selected.type === 'rect') {
+    $('borda').value = Number(selected.rx || 0);
   }
 
+  // Retângulo ou círculo
+  if (selected && (selected.type === 'rect' || selected.type === 'circle')) {
+    objectBackgroundColor = String(selected.fill || '#111111');
+
+    $('background-color').value =
+      normalizeColor(objectBackgroundColor);
+
+    $('background-color-value').textContent =
+      objectBackgroundColor;
+  }
 }
 
 function normalizeColor(value) {
@@ -342,11 +358,13 @@ function initialize() {
   canvas.on('text:changed', saveHistory);
 
   $('image-btn').addEventListener('click', () => $('file-input').click());
+
   $('file-input').addEventListener('change', e => {
     const file = e.target.files && e.target.files[0];
     if (file) uploadImage(file);
     e.target.value = '';
   });
+
   $('text-btn').addEventListener('click', addText);
   $('rect-btn').addEventListener('click', addRect);
   $('circle-btn').addEventListener('click', addCircle);
@@ -359,19 +377,24 @@ function initialize() {
   $('delete-btn').addEventListener('click', remove);
   $('front-btn').addEventListener('click', front);
   $('back-btn').addEventListener('click', back);
+
   $('font-select').addEventListener('change', e => {
     font = e.target.value;
     updateText('fontFamily', font);
   });
+
   $('font-size').addEventListener('input', e => {
     fontSize = Number(e.target.value);
     updateText('fontSize', fontSize);
   });
+
   $('text-color').addEventListener('input', e => {
     textColor = e.target.value;
     $('text-color-value').textContent = textColor;
     updateText('fill', textColor);
   });
+
+
 
   $('background-color').addEventListener('input', (event) => {
     const selected = canvas.getActiveObject();
