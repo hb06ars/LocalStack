@@ -1,4 +1,4 @@
-package main.projeto.controller;
+package com.projeto.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +20,7 @@ public class S3Controller {
      */
 
     private final S3Client s3Client;
-    private static String BUCKET_S3 = "meu-bucket";
+    private static String BUCKET_S3 = "bucket-templates";
 
     public S3Controller(S3Client s3Client) {
         this.s3Client = s3Client;

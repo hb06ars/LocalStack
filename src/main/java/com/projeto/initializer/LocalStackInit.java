@@ -1,4 +1,4 @@
-package main.projeto.initializer;
+package com.projeto.initializer;
 
 
 import org.springframework.context.annotation.Bean;
@@ -36,7 +36,7 @@ public class LocalStackInit {
 
     private void criarFila(SqsClient sqsClient) {
 
-        String nomeFila = "fila-pedidos";
+        String nomeFila = "fila-templates";
 
         try {
             sqsClient.getQueueUrl(
@@ -59,7 +59,7 @@ public class LocalStackInit {
 
     private void criarBucket(S3Client s3Client) {
 
-        String nomeBucket = "meu-bucket";
+        String nomeBucket = "bucket-templates";
 
         try {
             s3Client.headBucket(
@@ -82,7 +82,7 @@ public class LocalStackInit {
 
     private void criarTabela(DynamoDbClient dynamoDbClient) {
 
-        String nomeTabela = "pedidos";
+        String nomeTabela = "templates";
 
         try {
 

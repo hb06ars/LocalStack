@@ -1,4 +1,4 @@
-package main.projeto.globals;
+package com.projeto.globals;
 
 public class Globals {
 

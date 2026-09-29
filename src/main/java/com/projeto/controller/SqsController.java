@@ -1,4 +1,4 @@
-package main.projeto.controller;
+package com.projeto.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +23,7 @@ public class SqsController {
 
         sqsClient.sendMessage(
                 SendMessageRequest.builder()
-                        .queueUrl("http://localhost:4566/000000000000/fila-pedidos")
+                        .queueUrl("http://localhost:4566/000000000000/fila-templates")
                         .messageBody("Teste")
                         .build()
         );

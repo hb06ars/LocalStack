@@ -1,4 +1,4 @@
-package main.projeto.controller;
+package com.projeto.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +19,7 @@ public class DynamoDbController {
      */
 
     private final DynamoDbClient dynamoDbClient;
-    private String TABELA = "pedidos";
+    private String TABELA = "templates";
 
     public DynamoDbController(DynamoDbClient dynamoDbClient) {
         this.dynamoDbClient = dynamoDbClient;

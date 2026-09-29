@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Studio</title>
+  <meta name="description" content="Editor web para criação de templates e cartazes">
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>Template Studio</span></div>
+      <div class="project">Meu projeto <span>•</span> <span id="project-size">Instagram 1080 × 1080</span></div>
+      <div class="top-actions">
+        <button id="undo-btn" title="Desfazer">↶</button>
+        <button id="redo-btn" title="Refazer">↷</button>
+        <button id="export-btn" class="primary">Exportar PNG</button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar left">
+        <button class="tool active" type="button">
+          <img src="images/paleta.png" alt="">
+          <span>Design</span>
+        </button>
+        <button class="tool" id="image-btn" type="button">
+          <img src="images/foto.png" alt="">
+          <span>Imagem</span>
+        </button>
+        <button class="tool" id="text-btn" type="button">
+          <img src="images/texto.png" alt="">
+          <span>Texto</span>
+        </button>
+        <button class="tool" id="rect-btn" type="button">
+          <svg viewBox="0 0 256 256" aria-hidden="true"><rect width="192" height="160" x="32" y="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" rx="8"></rect></svg>
+          <span>Retângulo</span>
+        </button>
+        <button class="tool" id="circle-btn" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" stroke="currentColor" stroke-width="1.5" d="M4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12Z" clip-rule="evenodd" fill="none"></path></svg>
+          <span>Círculo</span>
+        </button>
+        <input id="file-input" hidden type="file" accept="image/*">
+      </aside>
+
+      <section class="editor-area">
+        <div class="toolbar">
+          <label>Tamanho
+            <select id="size-select"></select>
+          </label>
+          <div class="toolbar-spacer"></div>
+          <span class="status" id="status">Pronto para criar</span>
+          <button id="zoom-out" type="button">−</button>
+          <span id="zoom-label">65%</span>
+          <button id="zoom-in" type="button">+</button>
+        </div>
+        <div class="canvas-stage">
+          <div class="canvas-wrap"><canvas id="editor-canvas"></canvas></div>
+        </div>
+      </section>
+
+      <aside class="properties">
+        <h3>Propriedades</h3>
+        <div id="empty-properties" class="empty">Selecione um elemento<br>no canvas para editar.</div>
+        <div id="selected-properties" hidden>
+          <div id="text-properties">
+            <label>Fonte
+              <select id="font-select">
+                <option>Montserrat</option>
+                <option>Inter</option>
+                <option>Roboto</option>
+                <option>Poppins</option>
+                <option>Oswald</option>
+                <option>Playfair Display</option>
+              </select>
+            </label>
+            <label>Tamanho
+              <input id="font-size" type="number" min="1">
+            </label>
+            <label>Cor
+              <div class="color-row">
+                <input id="text-color" type="color">
+                <span id="text-color-value"></span>
+              </div>
+            </label>
+          </div>
+          <div id="object-properties">
+            <label>Cor de Fundo
+              <div class="color-row">
+                <input id="background-color" type="color">
+                <span id="background-color-value">#111111</span>
+              </div>
+            </label>
+          </div>
+
+
+
+
+          <div class="property-grid">
+            <button id="front-btn" type="button">Trazer frente</button>
+            <button id="back-btn" type="button">Enviar trás</button>
+          </div>
+          <button id="delete-btn" class="danger" type="button">Excluir elemento</button>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="footer">
+      <span>Template Studio</span>
+      <span>Ctrl+D duplicar · Delete excluir</span>
+    </footer>
+  </main>
+
+  <!-- Fabric.js 6.9.1. A aplicação não depende mais de Next.js/React. -->
+  <script src="https://cdn.jsdelivr.net/npm/fabric@6.9.1/dist/index.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
