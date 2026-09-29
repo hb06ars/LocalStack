@@ -109,6 +109,7 @@ function updateSelection() {
   $('text-properties').hidden = !selected || selected.type !== 'i-text';
   $('object-properties').hidden = !selected || (selected.type !== 'rect' && selected.type !== 'circle');
 
+  document.getElementById("id-borda").style.display = !selected || selected.type !== 'rect' ? 'none' : 'block';
 
   if (selected && selected.type === 'i-text') {
     font = String(selected.fontFamily || 'Montserrat');
@@ -120,11 +121,12 @@ function updateSelection() {
     $('text-color-value').textContent = textColor;
   }
 
-    if (selected && (selected.type === 'rect' || selected.type === 'circle')) {
-        objectBackgroundColor = String(selected.fill || '#111111');
-        $('background-color').value = normalizeColor(objectBackgroundColor);
-        $('background-color-value').textContent = objectBackgroundColor;
-    }
+  if (selected && (selected.type === 'rect' || selected.type === 'circle')) {
+    objectBackgroundColor = String(selected.fill || '#111111');
+    $('background-color').value = normalizeColor(objectBackgroundColor);
+    $('background-color-value').textContent = objectBackgroundColor;
+  }
+
 }
 
 function normalizeColor(value) {
