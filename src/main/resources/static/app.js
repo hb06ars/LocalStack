@@ -145,7 +145,7 @@ function addText() {
 function addRect() {
   const rect = new fabric.Rect({
     left: 180, top: 300, width: 360, height: 180,
-    fill: '#111111', rx: 20, ry: 20, id: `rect-${Date.now()}`
+    fill: '#111111', rx: 0, ry: 0, id: `rect-${Date.now()}`
   });
   canvas.add(rect);
   canvas.setActiveObject(rect);
