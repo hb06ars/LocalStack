@@ -143,9 +143,10 @@ function addText() {
 }
 
 function addRect() {
+  var idborda = document.getElementById("borda").value;
   const rect = new fabric.Rect({
     left: 180, top: 300, width: 360, height: 180,
-    fill: '#111111', rx: 0, ry: 0, id: `rect-${Date.now()}`
+    fill: '#111111', rx: idborda, ry: idborda, id: `rect-${Date.now()}`
   });
   canvas.add(rect);
   canvas.setActiveObject(rect);
