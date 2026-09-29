@@ -327,7 +327,9 @@ function duplicateSelected() {
 
 function setZoom(value) {
   zoom = Math.max(0.25, Math.min(1.5, value));
-  canvas.setZoom(zoom);
+  const canvasWrap = document.getElementById('canvas-wrap');
+  canvasWrap.style.transform = `scale(${zoom})`;
+  canvasWrap.style.transformOrigin = 'center center';
   canvas.requestRenderAll();
   $('zoom-label').textContent = `${Math.round(zoom * 100)}%`;
 }
