@@ -21,22 +21,33 @@
 
     <div class="workspace">
       <aside class="sidebar left">
+
         <button class="tool active" type="button">
           <img src="images/paleta.png" alt="">
           <span>Design</span>
         </button>
+
         <button class="tool" id="image-btn" type="button">
           <img src="images/foto.png" alt="">
           <span>Imagem</span>
         </button>
+
         <button class="tool" id="text-btn" type="button">
           <img src="images/texto.png" alt="">
           <span>Texto</span>
         </button>
+
+        <button class="tool" id="fundotela-btn" type="button">
+          <img src="images/balde.png" alt="">
+          <span>Fundo</span>
+        </button>
+        <input id="canvas-background-color" type="color" value="#ffffff" hidden>
+
         <button class="tool" id="rect-btn" type="button">
           <svg viewBox="0 0 256 256" aria-hidden="true"><rect width="192" height="160" x="32" y="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" rx="8"></rect></svg>
           <span>Retângulo</span>
         </button>
+
         <button class="tool" id="circle-btn" type="button">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" stroke="currentColor" stroke-width="1.5" d="M4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12Z" clip-rule="evenodd" fill="none"></path></svg>
           <span>Círculo</span>

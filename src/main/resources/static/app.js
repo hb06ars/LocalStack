@@ -21,6 +21,20 @@ let historyIndex = -1;
 
 const $ = id => document.getElementById(id);
 
+const fundoTelaBtn = document.getElementById('fundotela-btn');
+const canvasBackgroundColor = document.getElementById('canvas-background-color');
+
+fundoTelaBtn.addEventListener('click', () => {
+    canvasBackgroundColor.click();
+});
+
+canvasBackgroundColor.addEventListener('input', (event) => {
+    const color = event.target.value;
+    canvas.backgroundColor = color;
+    canvas.requestRenderAll();
+    saveHistory();
+});
+
 function setStatus(message) { $('status').textContent = message; }
 
 function serializeCanvas() {
