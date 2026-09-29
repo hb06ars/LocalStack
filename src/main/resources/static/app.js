@@ -35,6 +35,20 @@ canvasBackgroundColor.addEventListener('input', (event) => {
     saveHistory();
 });
 
+document.getElementById('borda').addEventListener('input', function () {
+    const selected = canvas.getActiveObject();
+    if (!selected || selected.type !== 'rect') {
+        return;
+    }
+    const borda = Number(this.value);
+    selected.set({
+        rx: borda,
+        ry: borda
+    });
+    canvas.requestRenderAll();
+    saveHistory();
+});
+
 function setStatus(message) { $('status').textContent = message; }
 
 function serializeCanvas() {
@@ -143,15 +157,23 @@ function addText() {
 }
 
 function addRect() {
-  var idborda = document.getElementById("borda").value;
-  const rect = new fabric.Rect({
-    left: 180, top: 300, width: 360, height: 180,
-    fill: '#111111', rx: idborda, ry: idborda, id: `rect-${Date.now()}`
-  });
-  canvas.add(rect);
-  canvas.setActiveObject(rect);
-  canvas.requestRenderAll();
-  saveHistory();
+    const borda = Number(document.getElementById('borda').value) || 0;
+
+    const rect = new fabric.Rect({
+        left: 180,
+        top: 300,
+        width: 360,
+        height: 180,
+        fill: '#111111',
+        rx: borda,
+        ry: borda,
+        id: `rect-${Date.now()}`
+    });
+
+    canvas.add(rect);
+    canvas.setActiveObject(rect);
+    canvas.requestRenderAll();
+    saveHistory();
 }
 
 function addCircle() {
